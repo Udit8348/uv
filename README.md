@@ -26,12 +26,17 @@ As a student interested in both databases and machine learning, I wanted to unde
 ## Current Status
 
 This is a work in progress. I'm actively developing the core functionality and learning along the way.
+After the mid point update, I plan to add more paging and persistence to the database to that it is robust just like buzzdb.
 
 ## Building from Source
 
-(Instructions coming soon as development progresses)
+```
+# Build the binary
+bazel build //src:uv
 
-## Contributing
+# Run the binary
+bazel run //src:uv
 
-While this is primarily a personal learning project, I welcome suggestions and discussions about vector databases and efficient implementations!
-
+# Run the tests
+bazel test //src:uv_test
+``` 
