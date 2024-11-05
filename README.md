@@ -29,7 +29,7 @@ This is a work in progress. I'm actively developing the core functionality and l
 After the mid point update, I plan to add more paging and persistence to the database to that it is robust just like buzzdb.
 
 ## Building from Source
-
+This project uses bazel as the build system. You can learn more about bazel [here](https://bazel.build/).
 ```
 # Build the binary
 bazel build //src:uv
