@@ -51,6 +51,25 @@ namespace uv
         return dot_product / (std::sqrt(norm1) * std::sqrt(norm2));
     }
 
+    float VectorDatabase::euclidean_distance(
+        const std::vector<float> &v1,
+        const std::vector<float> &v2) const
+    {
+        if (v1.size() != v2.size())
+        {
+            throw std::runtime_error("Vector dimensions do not match");
+        }
+
+        float sum_squares = 0.0f;
+        for (size_t i = 0; i < v1.size(); ++i)
+        {
+            float diff = v1[i] - v2[i];
+            sum_squares += diff * diff;
+        }
+
+        return std::sqrt(sum_squares);
+    }
+
     std::vector<std::pair<std::string, float>> VectorDatabase::find_nearest(
         const std::vector<float> &query,
         size_t k)

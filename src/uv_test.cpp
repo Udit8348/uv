@@ -26,8 +26,9 @@ TEST(VectorDatabaseTest, RemoveVector)
     db.add_vector("test1", {1.0f, 0.0f, 0.0f});
     EXPECT_EQ(db.size(), 1);
 
-    db.remove_vector("test1");
-    EXPECT_EQ(db.size(), 0);
+    // Remove the vector and verify it's gone
+    db.remove_vector("test1"); // Should work fine
+    EXPECT_EQ(db.size(), 0);   // Database should be empty now
 }
 
 TEST(VectorDatabaseTest, CosineSimilarity)

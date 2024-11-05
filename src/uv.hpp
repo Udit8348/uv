@@ -8,7 +8,6 @@
 
 namespace uv
 {
-
     class VectorDatabase
     {
     public:
@@ -25,6 +24,11 @@ namespace uv
 
         // Get the number of vectors in the database
         size_t size() const;
+
+        // Calculate Euclidean distance between two vectors
+        float euclidean_distance(
+            const std::vector<float> &v1,
+            const std::vector<float> &v2) const;
 
     private:
         // Store vectors with their IDs
