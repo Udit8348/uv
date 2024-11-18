@@ -1,6 +1,9 @@
 #include "uv.hpp"
 #include <algorithm>
 #include <queue>
+#include <fstream>
+#include <stdexcept>
+#include <mutex>
 
 namespace uv
 {
@@ -113,6 +116,56 @@ namespace uv
             throw std::runtime_error("Vector ID not found: " + id);
         }
         return it->second;
+    }
+
+    void VectorDatabase::save_to_file(const std::string &filepath)
+    {
+        std::lock_guard<std::mutex> lock(mtx_);
+        std::ofstream out(filepath);
+        if (!out.is_open())
+        {
+            throw std::runtime_error("Could not open file for writing: " + filepath);
+        }
+
+        for (const auto &[id, vector] : vectors_)
+        {
+            out << id << " ";
+            for (const auto &value : vector)
+            {
+                out << value << " ";
+            }
+            out << "\n";
+        }
+
+        out.close();
+    }
+
+    void VectorDatabase::load_from_file(const std::string &filepath)
+    {
+        std::lock_guard<std::mutex> lock(mtx_);
+        std::ifstream in(filepath);
+        if (!in.is_open())
+        {
+            throw std::runtime_error("Could not open file for reading: " + filepath);
+        }
+
+        vectors_.clear(); // Clear existing vectors
+
+        std::string id;
+        while (in >> id)
+        {
+            std::vector<float> vector;
+            float value;
+            while (in >> value)
+            {
+                vector.push_back(value);
+                if (in.peek() == '\n' || in.eof())
+                    break; // Stop reading if end of line or file
+            }
+            vectors_[id] = vector;
+        }
+
+        in.close();
     }
 
 } // namespace uv
