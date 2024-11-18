@@ -105,4 +105,14 @@ namespace uv
         return vectors_.size();
     }
 
+    const std::vector<float> &VectorDatabase::get_vector(const std::string &id) const
+    {
+        auto it = vectors_.find(id);
+        if (it == vectors_.end())
+        {
+            throw std::runtime_error("Vector ID not found: " + id);
+        }
+        return it->second;
+    }
+
 } // namespace uv

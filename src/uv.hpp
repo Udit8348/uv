@@ -30,14 +30,22 @@ namespace uv
             const std::vector<float> &v1,
             const std::vector<float> &v2) const;
 
-    private:
-        // Store vectors with their IDs
-        std::unordered_map<std::string, std::vector<float>> vectors_;
+        // Get a vector by ID
+        const std::vector<float> &get_vector(const std::string &id) const;
+
+        float calculate_similarity(const std::vector<float> &vec1, const std::vector<float> &vec2)
+        {
+            return cosine_similarity(vec1, vec2);
+        }
 
         // Calculate cosine similarity between two vectors
         float cosine_similarity(
             const std::vector<float> &v1,
             const std::vector<float> &v2) const;
+
+    private:
+        // Store vectors with their IDs
+        std::unordered_map<std::string, std::vector<float>> vectors_;
     };
 
 } // namespace uv
