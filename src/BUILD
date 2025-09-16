@@ -1,7 +1,7 @@
 cc_library(
     name = "uv_lib",
-    srcs = ["uv.cpp"],
-    hdrs = ["uv.hpp"],
+    srcs = ["uv.cpp", "query_processor.cpp"],
+    hdrs = ["uv.hpp", "query_processor.hpp"],
     visibility = ["//visibility:public"],
 )
 
@@ -14,8 +14,9 @@ cc_binary(
 cc_test(
     name = "uv_test",
     srcs = ["uv_test.cpp"],
+    size = "small",
     deps = [
         ":uv_lib",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )

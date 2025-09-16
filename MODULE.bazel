@@ -1,0 +1,6 @@
+module(
+    name = "uv",
+    version = "0.1.0",   # pick your project’s version
+)
+
+bazel_dep(name = "googletest", version = "1.14.0.bcr.1")
