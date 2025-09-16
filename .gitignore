@@ -10,38 +10,5 @@
 .vscode/
 *.code-workspace
 
-# IDE - JetBrains (CLion, IntelliJ, etc)
-.idea/
-*.iml
-*.iws
-*.ipr
-cmake-build-*/
-
-# IDE - XCode
-*.xcodeproj
-*.xcworkspace
-xcuserdata/
-
-# Compiled files
-*.o
-*.so
-*.dylib
-*.dll
-*.exe
-
 # OS specific
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Logs and databases
-*.log
-*.sqlite
-
-# Build directories
-build/
-dist/ 
