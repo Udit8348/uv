@@ -44,12 +44,12 @@ namespace uv
         {
             return cosine_similarity(vec1, vec2);
         }
+        
+        float cosine_similarity(const std::vector<float> &v1, const std::vector<float> &v2) const;
 
     private:
         std::unordered_map<std::string, std::vector<float>> vectors_;
         std::mutex mtx_;
-
-        float cosine_similarity(const std::vector<float> &v1, const std::vector<float> &v2) const;
     };
 
 } // namespace uv
