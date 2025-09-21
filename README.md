@@ -39,4 +39,5 @@ bazel run //src:uv
 
 # Run the tests
 bazel test //src:uv_test
+bazel test //:uv_test --test_output=all
 ``` 
